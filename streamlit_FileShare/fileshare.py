@@ -1,7 +1,7 @@
 import streamlit as stl
 import os
 
-maintitle = stl.title("파일 공유용 웹사이트")
+maintitle = stl.title("파일 공유용 웹앱")
 dir ="share file/"
 if not os.path.exists(dir):
 	os.mkdir(dir)
