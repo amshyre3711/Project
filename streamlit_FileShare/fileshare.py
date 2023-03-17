@@ -2,20 +2,6 @@
 import streamlit as stl
 import os
 
-class main:
-	def main():
-		stm=streamlit_fileshare()
-		if stm != None:
-			stm.stmhead()
-			stm.diretory()
-			stm.upload()
-			stm.file_list()
-			stm.download()
-			stm.filedelete()
-			stm.stmtail()
-		else:
-			stm.close()
-
 class streamlit_fileshare:
 	dir ="share file/"
 	def stmhead(self):
@@ -61,5 +47,18 @@ class streamlit_fileshare:
 	def stmtail(self):
 		stl.caption(" My Email : kkw2401@naver.com")
 		stl.caption("Phone Number : 010-5514-3711")
+class main:
+	def main():
+		stm=streamlit_fileshare()
+		if stm != None:
+			stm.stmhead()
+			stm.diretory()
+			stm.upload()
+			stm.file_list()
+			stm.download()
+			stm.filedelete()
+			stm.stmtail()
+		else:
+			stm.close()
 
 main.main()
