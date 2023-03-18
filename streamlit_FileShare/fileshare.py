@@ -1,21 +1,27 @@
 #내장 라이브러리 불러오기
 import streamlit as stl
-import zipfile as zip
+import zipfile
 import os
+import time
 
 #스트림릿 기능 구현 클래스
 class streamlit_fileshare:
 	#변수 선언
 	dir ="share file/"
+	dir2 ="zip file/"
 	filelist= os.listdir(dir)
+	zip_file = os.listdir(dir2)
 	num= len(filelist)
+	zp =""
 	#제목
 	def stmhead(self):
 		stl.title("파일 공유용 웹")
 	#파일 저장소가 없으면 생성하는 함수
 	def diretory(self):
 		if not os.path.exists(self.dir):
-			os.mk.dir(self.dir)
+			os.mkdir(self.dir)
+		if not os.path.exists(self.dir2):
+			os.mkdir(self.dir2)
 	#파일 목록을 불러와서 표시하는 함수
 	def file_list(self):
 		stl.markdown("## 저장된 파일 목록 리스트")
@@ -33,13 +39,34 @@ class streamlit_fileshare:
 				stl.write("{} 업로드 성공".format(str(file.name)))
 			except:
 				stl.write("업로드 실패")
-	#파일을 다운로드받는 버튼 활성화 및 다운 기능 구현하는 함수.
+	#파일 압축 알고리즘
+	def zipdown(self):
+		zip= zipfile.ZipFile(self.dir2+"모든 파일.zip", "w")
+		for i in self.filelist:
+			zip.write(self.dir+i)
+		zip.close()
+		time.sleep(1)
+		
+	#파일을 다운로드받는 버튼 활성화 및 다운 기능 구현하는 함수.            
 	def download(self):
 		stl.markdown("## 파일 다운로드")
+		all_download= stl.button("압축파일 생성",type="primary")
+		try:
+			if all_download:
+				self.zipdown()
+				with open(self.dir2+self.zip_file[0],"rb") as f:
+					down= stl.download_button(
+					label= str(self.zip_file[0]),
+					data=f,
+					file_name=str(self.zip_file[0])
+)
+				os.remove(self.dir2+self.zip_file[0])
+		except:
+				stl.write("다시 버튼을 눌러주세요.")
 		try:
 			for i in range(self.num):
 				with open(self.dir+self.filelist[i],"rb") as allfile:
-					all_down= stl.download_button(
+					down= stl.download_button(
 					label= str(self.filelist[i]),
 					data=allfile,
 					file_name=str(self.filelist[i])
