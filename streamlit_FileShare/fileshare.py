@@ -47,7 +47,7 @@ class streamlit_fileshare:
 	#파일을 다운로드받는 버튼 활성화 및 다운 기능 구현하는 함수.            
 	def download(self):
 		stl.markdown("## 파일 다운로드")
-		all_download= stl.button("압축파일 생성",type="primary")
+		all_download= stl.button("전체 압축파일 생성",type="primary")
 		try:
 			if all_download:
 				self.zipdown()
