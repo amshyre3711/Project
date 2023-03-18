@@ -9,10 +9,10 @@ class streamlit_fileshare:
 	#변수 선언
 	dir ="share file/"
 	dir2 ="zip file/"
-	if not os.path.exists(self.dir):
-			os.mkdir(self.dir)
-	if not os.path.exists(self.dir2):
-			os.mkdir(self.dir2)
+	if not os.path.exists(dir):
+			os.mkdir(dir)
+	if not os.path.exists(dir2):
+			os.mkdir(dir2)
 	filelist= os.listdir(dir)
 	zip_file=os.listdir(dir2)
 	num= len(filelist)
