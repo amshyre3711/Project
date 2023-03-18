@@ -1,4 +1,4 @@
-#내장 라이브러리 불러오기
+#라이브러리 불러오기
 import streamlit as stl
 import zipfile
 import os
@@ -9,19 +9,16 @@ class streamlit_fileshare:
 	#변수 선언
 	dir ="share file/"
 	dir2 ="zip file/"
+	if not os.path.exists(self.dir):
+			os.mkdir(self.dir)
+	if not os.path.exists(self.dir2):
+			os.mkdir(self.dir2)
 	filelist= os.listdir(dir)
-	zip_file = os.listdir(dir2)
+	zip_file=os.listdir(dir2)
 	num= len(filelist)
-	zp =""
 	#제목
 	def stmhead(self):
 		stl.title("파일 공유용 웹")
-	#파일 저장소가 없으면 생성하는 함수
-	def diretory(self):
-		if not os.path.exists(self.dir):
-			os.mkdir(self.dir)
-		if not os.path.exists(self.dir2):
-			os.mkdir(self.dir2)
 	#파일 목록을 불러와서 표시하는 함수
 	def file_list(self):
 		stl.markdown("## 저장된 파일 목록 리스트")
@@ -104,7 +101,6 @@ class main:
 		stm=streamlit_fileshare()
 		if stm != None:
 			stm.stmhead()
-			stm.diretory()
 			stm.upload()
 			stm.file_list()
 			stm.download()
