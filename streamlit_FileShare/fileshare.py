@@ -107,7 +107,7 @@ class main:
 			stm.filedelete()
 			stm.stmtail()
 		else:
-			stm.close()
+			stm=streamlit_fileshare()
 
 #시작
 main.main()
