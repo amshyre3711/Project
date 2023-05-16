@@ -92,8 +92,7 @@ class streamlit_fileshare:
 			stl.write("파일이 없습니다.")
 	#캡션 함수
 	def stmtail(self):
-		stl.caption(" My Email : kkw2401@naver.com")
-		stl.caption("Phone Number : 010-5514-3711")
+		stl.caption(" My Email : amshyre3711@gmail.com")
 		
 #메인 클래스
 class main:
